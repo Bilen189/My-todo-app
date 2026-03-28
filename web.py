@@ -4,12 +4,17 @@ import functions
 
 todos = functions.get_todos()
 
+
 def add_todo():
     todo_added = st.session_state["new_todo"].strip()
-    if todo_added:  # avoid empty inputs
-        todos.append(todo_added + "\n")
-        functions.write_todos(todos)
-        st.session_state["new_todo"] = ""
+
+    if todo_added:
+        if todo_added + "\n" in todos:
+            st.warning("⚠️ This todo already exists!")
+        else:
+            todos.append(todo_added + "\n")
+            functions.write_todos(todos)
+            st.session_state["new_todo"] = ""
 
 st.title("My To-Do App")
 st.subheader("")
