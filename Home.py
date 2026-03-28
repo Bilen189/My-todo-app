@@ -18,11 +18,8 @@ def add_todo():
 
 st.title("My To-Do App")
 st.subheader("")
-st.write("Your To-Do app allows you to manage your tasks and be <b>productive daily</b>.",
-         unsafe_allow_html=True)
-st.text_input(label="", placeholder="Add new todo...",
-              on_change=add_todo, key="new_todo")
-st.set_page_config(layout="centered")
+st.write("")
+
 for index, todo in enumerate(todos):
     if st.checkbox(todo, key=todo):
         new_todos = todos.copy()
@@ -31,5 +28,6 @@ for index, todo in enumerate(todos):
         del st.session_state[todo]
         st.rerun()
 
-
+st.text_input(label="", placeholder="Add new todo...",
+              on_change=add_todo, key="new_todo")
 
