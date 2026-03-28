@@ -9,6 +9,7 @@ def add_todo():
     if todo_added:  # avoid empty inputs
         todos.append(todo_added + "\n")
         functions.write_todos(todos)
+        st.session_state["new_todo"] = ""
 
 st.title("My To-Do App")
 st.subheader("")
