@@ -16,11 +16,11 @@ st.subheader("")
 st.write("")
 
 for index, todo in enumerate(todos):
-    if st.checkbox(todo, key=index):
+    if st.checkbox(todo, key=todo):
         new_todos = todos.copy()
         new_todos.pop(index)
         functions.write_todos(new_todos)
-        del st.session_state[index]
+        del st.session_state[todo]
         st.rerun()
 
 st.text_input(label="", placeholder="Add new todo...",
